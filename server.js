@@ -38,6 +38,21 @@ app.use(express.static(__dirname + "/public"));
 app.get("/", (req, res) => {
     res.sendFile(__dirname + "/index.html");
 });
+app.get("/user", (req, res) => {
+    res.send("User Page");
+});
+app.get("/user/:username", (req, res) => {
+    var username = req.params.username;
+    res.send(username);
+});
+app.get("/users", (req, res) => {
+    var name = req.query;
+    res.json(name);
+});
+app.post("/users", (req, res) => {
+    var name = req.query;
+    res.json(name);
+});
 app.listen(3000, () => {
     console.log("server is listening on port 3000");
 });
